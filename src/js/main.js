@@ -198,12 +198,26 @@ let urlApi = 'https://api.covid19api.com/summary';
 const app = angular.module("covid19", ['ngMaterial', 'ngMessages']);
 app.controller("test", $scope => {
   fetch(urlApi).then(response => response.json()).then(data => {
-    $scope.date = data.Date;
+    const day = splitData(data.Date);
+    $scope.date = day;
     $scope.global = data.Global;
     $scope.countries = data.Countries;
     $scope.$apply();
+  }).catch(() => {
+    console.log('Error');
   });
-});
+}); // Funzione che splitta la data e la converte
+
+const splitData = x => {
+  let string = x.split('T');
+  let left = string[0];
+  let split = left.split('-');
+  let day = split[2];
+  let month = split[1];
+  let year = split[0];
+  let result = 'Data: ' + day + '-' + month + '-' + year;
+  return result;
+};
 
 /***/ }),
 /* 1 */,
