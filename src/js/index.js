@@ -1,10 +1,10 @@
-import '../css/style.scss';
-import 'angular-material/angular-material.css';
 import 'angular';
 import 'angular-aria';
 import 'angular-animate';
 import 'angular-material';
 import 'angular-messages';
+import '../css/style.scss';
+import 'angular-material/angular-material.css';
 import img1 from '../assets/icons/01.svg';
 import img2 from '../assets/icons/02.svg';
 import img3 from '../assets/icons/03.svg';
