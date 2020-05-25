@@ -1,0 +1,51 @@
+$global-background: #ecf0f1;
+$nazione-background: #f5f6fa;
+
+.containerGlobal{
+  background-color: $global-background;
+  .globalTitle{
+    font-size: 2em;
+    text-align: center;
+    padding: 16px;
+  }
+  .globalSub{
+    .globalItem{
+      text-align: center;
+      padding-bottom: 16px;
+      img{
+        width: 60px;
+        height: auto;
+      }
+      .itemTitle{
+        font-size: 1.3em;
+      }
+      
+      .itemData{
+        font-size: 1em;
+      }
+    }
+  }
+}
+
+.nazioneContainer{
+  padding: 16px;
+  background-color: $nazione-background;
+  .nazioneTitle{
+    text-align: center;
+    font-size: 2em;
+  }
+  .filtroContainer{
+    width: 100%;
+  }
+}
+
+td, th {
+  border-bottom: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+table{
+  width: 100%;
+  padding: 16px;
+}
