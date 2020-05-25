@@ -160,20 +160,20 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "app", function() { return app; });
-/* harmony import */ var _css_style_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
-/* harmony import */ var _css_style_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_css_style_scss__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var angular_material_angular_material_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(5);
-/* harmony import */ var angular_material_angular_material_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(angular_material_angular_material_css__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(7);
-/* harmony import */ var angular__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(angular__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var angular_aria__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(9);
-/* harmony import */ var angular_aria__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(angular_aria__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var angular_animate__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(11);
-/* harmony import */ var angular_animate__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(angular_animate__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var angular_material__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(13);
-/* harmony import */ var angular_material__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(angular_material__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var angular_messages__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(15);
-/* harmony import */ var angular_messages__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(angular_messages__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var angular__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
+/* harmony import */ var angular__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(angular__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var angular_aria__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(3);
+/* harmony import */ var angular_aria__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(angular_aria__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var angular_animate__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(5);
+/* harmony import */ var angular_animate__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(angular_animate__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var angular_material__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(7);
+/* harmony import */ var angular_material__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(angular_material__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var angular_messages__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(9);
+/* harmony import */ var angular_messages__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(angular_messages__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _css_style_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(11);
+/* harmony import */ var _css_style_scss__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_css_style_scss__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var angular_material_angular_material_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(15);
+/* harmony import */ var angular_material_angular_material_css__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(angular_material_angular_material_css__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _assets_icons_01_svg__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(17);
 /* harmony import */ var _assets_icons_02_svg__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(18);
 /* harmony import */ var _assets_icons_03_svg__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(19);
@@ -206,11 +206,21 @@ app.controller("test", $scope => {
 });
 
 /***/ }),
-/* 1 */
+/* 1 */,
+/* 2 */,
+/* 3 */,
+/* 4 */,
+/* 5 */,
+/* 6 */,
+/* 7 */,
+/* 8 */,
+/* 9 */,
+/* 10 */,
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var api = __webpack_require__(2);
-            var content = __webpack_require__(3);
+var api = __webpack_require__(12);
+            var content = __webpack_require__(13);
 
             content = content.__esModule ? content.default : content;
 
@@ -230,30 +240,20 @@ var update = api(content, options);
 module.exports = content.locals || {};
 
 /***/ }),
-/* 2 */,
-/* 3 */
+/* 12 */,
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Imports
-var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(4);
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(14);
 exports = ___CSS_LOADER_API_IMPORT___(true);
 // Module
-exports.push([module.i, "[ng\\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {\n  display: none !important;\n}\n\n.containerGlobal {\n  background-color: #ecf0f1;\n}\n.containerGlobal .globalTitle {\n  font-size: 2em;\n  text-align: center;\n  padding: 16px;\n}\n.containerGlobal .globalSub .globalItem {\n  text-align: center;\n  padding-bottom: 16px;\n}\n.containerGlobal .globalSub .globalItem img {\n  width: 60px;\n  height: auto;\n}\n.containerGlobal .globalSub .globalItem .itemTitle {\n  font-size: 1.3em;\n}\n.containerGlobal .globalSub .globalItem .itemData {\n  font-size: 1em;\n}\n\n.nazioneContainer {\n  padding: 16px;\n  background-color: #f5f6fa;\n}\n.nazioneContainer .nazioneTitle {\n  text-align: center;\n  font-size: 2em;\n}\n.nazioneContainer .filtroContainer {\n  width: 100%;\n}\n\ntd, th {\n  border-bottom: 1px solid #dddddd;\n  text-align: left;\n  padding: 8px;\n}\n\ntable {\n  width: 100%;\n  padding: 16px;\n}", "",{"version":3,"sources":["/Users/sandrogreco/Progetti/Work/SeoTesterOnline/Progetto/covid19-seotesteronline/src/css/style.scss","style.scss"],"names":[],"mappings":"AAAA;EACE,wBAAA;ACCF;;ADKA;EACE,yBAJkB;ACEpB;ADGE;EACE,cAAA;EACA,kBAAA;EACA,aAAA;ACDJ;ADII;EACE,kBAAA;EACA,oBAAA;ACFN;ADGM;EACE,WAAA;EACA,YAAA;ACDR;ADGM;EACE,gBAAA;ACDR;ADIM;EACE,cAAA;ACFR;;ADQA;EACE,aAAA;EACA,yBA9BmB;ACyBrB;ADME;EACE,kBAAA;EACA,cAAA;ACJJ;ADME;EACE,WAAA;ACJJ;;ADQA;EACE,gCAAA;EACA,gBAAA;EACA,YAAA;ACLF;;ADQA;EACE,WAAA;EACA,aAAA;ACLF","file":"style.scss","sourcesContent":["[ng\\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {\n  display: none !important;\n}\n\n$global-background: #ecf0f1;\n$nazione-background: #f5f6fa;\n\n.containerGlobal{\n  background-color: $global-background;\n  .globalTitle{\n    font-size: 2em;\n    text-align: center;\n    padding: 16px;\n  }\n  .globalSub{\n    .globalItem{\n      text-align: center;\n      padding-bottom: 16px;\n      img{\n        width: 60px;\n        height: auto;\n      }\n      .itemTitle{\n        font-size: 1.3em;\n      }\n      \n      .itemData{\n        font-size: 1em;\n      }\n    }\n  }\n}\n\n.nazioneContainer{\n  padding: 16px;\n  background-color: $nazione-background;\n  .nazioneTitle{\n    text-align: center;\n    font-size: 2em;\n  }\n  .filtroContainer{\n    width: 100%;\n  }\n}\n\ntd, th {\n  border-bottom: 1px solid #dddddd;\n  text-align: left;\n  padding: 8px;\n}\n\ntable{\n  width: 100%;\n  padding: 16px;\n}","[ng\\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {\n  display: none !important;\n}\n\n.containerGlobal {\n  background-color: #ecf0f1;\n}\n.containerGlobal .globalTitle {\n  font-size: 2em;\n  text-align: center;\n  padding: 16px;\n}\n.containerGlobal .globalSub .globalItem {\n  text-align: center;\n  padding-bottom: 16px;\n}\n.containerGlobal .globalSub .globalItem img {\n  width: 60px;\n  height: auto;\n}\n.containerGlobal .globalSub .globalItem .itemTitle {\n  font-size: 1.3em;\n}\n.containerGlobal .globalSub .globalItem .itemData {\n  font-size: 1em;\n}\n\n.nazioneContainer {\n  padding: 16px;\n  background-color: #f5f6fa;\n}\n.nazioneContainer .nazioneTitle {\n  text-align: center;\n  font-size: 2em;\n}\n.nazioneContainer .filtroContainer {\n  width: 100%;\n}\n\ntd, th {\n  border-bottom: 1px solid #dddddd;\n  text-align: left;\n  padding: 8px;\n}\n\ntable {\n  width: 100%;\n  padding: 16px;\n}"]}]);
+exports.push([module.i, ".containerGlobal {\n  background-color: #ecf0f1;\n}\n.containerGlobal .globalTitle {\n  font-size: 2em;\n  text-align: center;\n  padding: 16px;\n}\n.containerGlobal .globalSub .globalItem {\n  text-align: center;\n  padding-bottom: 16px;\n}\n.containerGlobal .globalSub .globalItem img {\n  width: 60px;\n  height: auto;\n}\n.containerGlobal .globalSub .globalItem .itemTitle {\n  font-size: 1.3em;\n}\n.containerGlobal .globalSub .globalItem .itemData {\n  font-size: 1em;\n}\n\n.nazioneContainer {\n  padding: 16px;\n  background-color: #f5f6fa;\n}\n.nazioneContainer .nazioneTitle {\n  text-align: center;\n  font-size: 2em;\n}\n.nazioneContainer .filtroContainer {\n  width: 100%;\n}\n\ntd, th {\n  border-bottom: 1px solid #dddddd;\n  text-align: left;\n  padding: 8px;\n}\n\ntable {\n  width: 100%;\n  padding: 16px;\n}", "",{"version":3,"sources":["/Users/sandrogreco/Progetti/Work/SeoTesterOnline/Progetto/covid19-seotesteronline/src/css/style.scss","style.scss"],"names":[],"mappings":"AAIA;EACE,yBAJkB;ACCpB;ADIE;EACE,cAAA;EACA,kBAAA;EACA,aAAA;ACFJ;ADKI;EACE,kBAAA;EACA,oBAAA;ACHN;ADIM;EACE,WAAA;EACA,YAAA;ACFR;ADIM;EACE,gBAAA;ACFR;ADKM;EACE,cAAA;ACHR;;ADSA;EACE,aAAA;EACA,yBA9BmB;ACwBrB;ADOE;EACE,kBAAA;EACA,cAAA;ACLJ;ADOE;EACE,WAAA;ACLJ;;ADSA;EACE,gCAAA;EACA,gBAAA;EACA,YAAA;ACNF;;ADSA;EACE,WAAA;EACA,aAAA;ACNF","file":"style.scss","sourcesContent":["\n$global-background: #ecf0f1;\n$nazione-background: #f5f6fa;\n\n.containerGlobal{\n  background-color: $global-background;\n  .globalTitle{\n    font-size: 2em;\n    text-align: center;\n    padding: 16px;\n  }\n  .globalSub{\n    .globalItem{\n      text-align: center;\n      padding-bottom: 16px;\n      img{\n        width: 60px;\n        height: auto;\n      }\n      .itemTitle{\n        font-size: 1.3em;\n      }\n      \n      .itemData{\n        font-size: 1em;\n      }\n    }\n  }\n}\n\n.nazioneContainer{\n  padding: 16px;\n  background-color: $nazione-background;\n  .nazioneTitle{\n    text-align: center;\n    font-size: 2em;\n  }\n  .filtroContainer{\n    width: 100%;\n  }\n}\n\ntd, th {\n  border-bottom: 1px solid #dddddd;\n  text-align: left;\n  padding: 8px;\n}\n\ntable{\n  width: 100%;\n  padding: 16px;\n}",".containerGlobal {\n  background-color: #ecf0f1;\n}\n.containerGlobal .globalTitle {\n  font-size: 2em;\n  text-align: center;\n  padding: 16px;\n}\n.containerGlobal .globalSub .globalItem {\n  text-align: center;\n  padding-bottom: 16px;\n}\n.containerGlobal .globalSub .globalItem img {\n  width: 60px;\n  height: auto;\n}\n.containerGlobal .globalSub .globalItem .itemTitle {\n  font-size: 1.3em;\n}\n.containerGlobal .globalSub .globalItem .itemData {\n  font-size: 1em;\n}\n\n.nazioneContainer {\n  padding: 16px;\n  background-color: #f5f6fa;\n}\n.nazioneContainer .nazioneTitle {\n  text-align: center;\n  font-size: 2em;\n}\n.nazioneContainer .filtroContainer {\n  width: 100%;\n}\n\ntd, th {\n  border-bottom: 1px solid #dddddd;\n  text-align: left;\n  padding: 8px;\n}\n\ntable {\n  width: 100%;\n  padding: 16px;\n}"]}]);
 // Exports
 module.exports = exports;
 
 
 /***/ }),
-/* 4 */,
-/* 5 */,
-/* 6 */,
-/* 7 */,
-/* 8 */,
-/* 9 */,
-/* 10 */,
-/* 11 */,
-/* 12 */,
-/* 13 */,
 /* 14 */,
 /* 15 */,
 /* 16 */,
