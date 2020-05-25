@@ -5,15 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>COVID-19</title>
   <!-- Angular Material -->
-
+  <style>
+    [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+      display: none !important;
+    }
+  </style>
 </head>
-<body ng-controller="test" ng-cloak>
+<body ng-controller="test">
   <!--Start-->
   <div layout="column" layout-fill="">
     <md-toolbar>
       <div class="md-toolbar-tools">
         <h2 md-truncate="" flex="">COVID-19</h2>
-        <p>
+        <p ng-cloak>
           {{ date }}
         </p>
       </div>
@@ -22,7 +26,7 @@
       <div class="globalTitle">Dati Globali</div>
       <div class="globalSub">
         <div layout="row" layout-wrap="">
-          <div class="globalItem" flex="100" flex-md="33" flex-gt-md="33">
+          <div class="globalItem" flex="100" flex-md="33" flex-gt-md="33" ng-cloak>
             <img src="src/assets/icons/01.svg" alt="">
             <div class="itemTitle">
               Nuovi Confermati
@@ -31,7 +35,7 @@
               + {{ global.NewConfirmed }}
             </div>
           </div>
-          <div class="globalItem" flex="100" flex-md="33" flex-gt-md="33">
+          <div class="globalItem" flex="100" flex-md="33" flex-gt-md="33" ng-cloak>
             <img src="src/assets/icons/02.svg" alt="">
             <div class="itemTitle">
               Totale Confermati
@@ -40,7 +44,7 @@
               {{ global.TotalConfirmed }}
             </div>
           </div>
-          <div class="globalItem" flex="100" flex-md="33" flex-gt-md="33">
+          <div class="globalItem" flex="100" flex-md="33" flex-gt-md="33" ng-cloak>
             <img src="src/assets/icons/03.svg" alt="">
             <div class="itemTitle">
               Nuovi Decessi
@@ -49,7 +53,7 @@
               + {{ global.NewDeaths}}
             </div>
           </div>
-          <div class="globalItem" flex="100" flex-md="33" flex-gt-md="33">
+          <div class="globalItem" flex="100" flex-md="33" flex-gt-md="33" ng-cloak>
             <img src="src/assets/icons/04.svg" alt="">
             <div class="itemTitle">
               Totale Decessi
@@ -58,7 +62,7 @@
               {{ global.TotalDeaths}}
             </div>
           </div>
-          <div class="globalItem" flex="100" flex-md="33" flex-gt-md="33">
+          <div class="globalItem" flex="100" flex-md="33" flex-gt-md="33" ng-cloak>
             <img src="src/assets/icons/05.svg" alt="">
             <div class="itemTitle">
               Nuovi Ricoveri
@@ -67,7 +71,7 @@
               {{ global.NewRecovered}}
             </div>
           </div>
-          <div class="globalItem" flex="100" flex-md="33" flex-gt-md="33">
+          <div class="globalItem" flex="100" flex-md="33" flex-gt-md="33" ng-cloak>
             <img src="src/assets/icons/06.svg" alt="">
             <div class="itemTitle">
               Totale Ricoveri
@@ -103,7 +107,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="x in countries | filter:search">
+        <tr ng-repeat="x in countries | filter:search" ng-cloak>
           <th>{{x.Country}}</th>
           <th>{{x.NewConfirmed}}</th>
           <th>{{x.TotalConfirmed}}</th>
