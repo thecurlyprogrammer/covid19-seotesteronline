@@ -26,7 +26,7 @@ async function getData() {
 // Funzione che crea la sezione global
 function createGlobal(response) {
     const global = response.data.Global;
-    const container = document.createElement("div");
+    const divContainer = document.getElementById("sectionGlobal");
     const globalData = [global.NewConfirmed, global.TotalConfirmed, global.NewDeaths, global.TotalDeaths, global.NewRecovered, global.TotalRecovered];
     const titleData = ['Nuovi Confermati', 'Totale Confermati', 'Nuovi Decessi', 'Totale Decessi', 'Nuovi Ricoveri', 'Totale Ricoveri'];
     const itemCount = globalData.length;
@@ -49,12 +49,9 @@ function createGlobal(response) {
         item.appendChild(images);
         item.appendChild(title);
         item.appendChild(value)
-        container.appendChild(item);
+        divContainer.appendChild(item);
     }
-    
-    const divContainer = document.getElementById("sectionGlobal");
-    divContainer.innerHTML = "";
-    divContainer.appendChild(container);
+
 }
 
 // Funzione che crea la tabella

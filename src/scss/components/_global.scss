@@ -1,6 +1,7 @@
 $global-background: #ecf0f1;
 
 .containerGlobal{
+  // width: 100%;
   background-color: $global-background;
   .globalTitle{
     font-size: 2em;
@@ -8,22 +9,31 @@ $global-background: #ecf0f1;
     padding: 16px;
   }
   .globalSub{
-    flex-direction: row;
-    flex-wrap: wrap;
-    box-sizing: border-box;
-    .globalItem{
-      text-align: center;
-      padding-bottom: 16px;
-      img{
-        width: 60px;
-        height: auto;
-      }
-      .itemTitle{
-        font-size: 1.3em;
-      }
-      
-      .itemData{
-        font-size: 1em;
+    #sectionGlobal{
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0;
+      padding: 0;
+      flex-direction: row;
+      .globalItem{
+        flex: 33%;
+        flex-direction: column;
+        text-align: center;
+        padding-bottom: 16px;
+        // background-color: red;
+        img{
+          width: 60px;
+          height: auto;
+        }
+        .itemTitle{
+          font-size: 1.3em;
+          font-weight: 400;
+        }
+        
+        .itemData{
+          font-size: 1em;
+          font-weight: 300;
+        }
       }
     }
   }

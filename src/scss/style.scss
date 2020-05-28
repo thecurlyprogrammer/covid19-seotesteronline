@@ -1,28 +1,9 @@
 @import './components/navbar';
 @import './components/global';
+@import './components/nazione';
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap');
 
-$nazione-background: #f5f6fa;
-
-.nazioneContainer{
-  padding: 16px;
-  background-color: $nazione-background;
-  .nazioneTitle{
-    text-align: center;
-    font-size: 2em;
-  }
-  .filtroContainer{
-    width: 100%;
-  }
-}
-
-td, th {
-  border-bottom: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
-
-table{
-  width: 100%;
-  padding: 16px;
+html, body{
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
 }
