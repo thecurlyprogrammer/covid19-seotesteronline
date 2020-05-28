@@ -1,0 +1,18 @@
+.navContainer{
+  width: 100%;
+  .nav{
+    display: flex;
+    align-content: space-between;
+    width: 100%;
+    background-color: rgb(63,81,181);
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    .navTitle{
+      font-size: 20px;
+    }
+    .navData{
+      font-size: 20px;
+    }
+  }
+}

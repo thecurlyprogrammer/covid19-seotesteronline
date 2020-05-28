@@ -1,6 +1,4 @@
-
 $global-background: #ecf0f1;
-$nazione-background: #f5f6fa;
 
 .containerGlobal{
   background-color: $global-background;
@@ -10,6 +8,9 @@ $nazione-background: #f5f6fa;
     padding: 16px;
   }
   .globalSub{
+    flex-direction: row;
+    flex-wrap: wrap;
+    box-sizing: border-box;
     .globalItem{
       text-align: center;
       padding-bottom: 16px;
@@ -26,27 +27,4 @@ $nazione-background: #f5f6fa;
       }
     }
   }
-}
-
-.nazioneContainer{
-  padding: 16px;
-  background-color: $nazione-background;
-  .nazioneTitle{
-    text-align: center;
-    font-size: 2em;
-  }
-  .filtroContainer{
-    width: 100%;
-  }
-}
-
-td, th {
-  border-bottom: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
-
-table{
-  width: 100%;
-  padding: 16px;
 }
