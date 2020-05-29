@@ -44,24 +44,49 @@ function createNav(response){
 function createGlobal(response) {
     const global = response;
     const divContainer = document.getElementById("sectionGlobal");
-    const globalData = [global.NewConfirmed, global.TotalConfirmed, global.NewDeaths, global.TotalDeaths, global.NewRecovered, global.TotalRecovered];
-    const titleData = ['Nuovi Confermati', 'Totale Confermati', 'Nuovi Decessi', 'Totale Decessi', 'Nuovi Ricoveri', 'Totale Ricoveri'];
-    const itemCount = globalData.length;
-    for (let i = 0; i < itemCount; i++){
+    const globalData = [
+        {
+            data: global.NewConfirmed,
+            title: 'Nuovi Confermati'
+        },
+        {
+            data: global.TotalConfirmed,
+            title: 'Totale Confermati'
+        },
+        {
+            data: global.NewDeaths,
+            title: 'Nuovi Decessi'
+        },
+        {
+            data: global.TotalDeaths,
+            title: 'Totale Confermati'
+        },
+        {
+            data: global.NewRecovered,
+            title: 'Nuovi Ricoveri'
+        },
+        {
+            data: global.TotalRecovered,
+            title: 'Totale Confermati'
+        }
+    ]
 
+    globalData.forEach(myFunction);
+
+    function myFunction(element, index) {
         let item = document.createElement("div");
         item.setAttribute('class', 'globalItem');
 
         let images = document.createElement("img");
-        images.src = `src/assets/icons/0` + (i+1) + `.svg`;
+        images.src = `src/assets/icons/0` + ( index + 1 ) + `.svg`;
 
         let title = document.createElement("div");
         title.setAttribute('class', 'itemTitle');
-        title.innerHTML = titleData[i];
+        title.innerHTML = element.title;
 
         let value = document.createElement("div");
         value.setAttribute('class', 'itemData');
-        value.innerHTML = globalData[i]
+        value.innerHTML = element.data;
 
         item.appendChild(images);
         item.appendChild(title);
