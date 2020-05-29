@@ -8,24 +8,41 @@ import img5 from '../assets/icons/05.svg';
 import img6 from '../assets/icons/06.svg';
 
 const axios = require('axios');
+const url = 'https://api.covid19api.com/summary';
 
-// Funzione che effettua la richiesta
-async function getData() {
+async function test(url) {
+    let request;
     try {
-        const response = await axios.get('https://api.covid19api.com/summary');
-        // console.log(response);
-        let data = response.data.Date;
-        document.getElementById('data').innerHTML = splitData(data);
-        createGlobal(response);
-        createCountries(response);
+        request = await axios.get(url);
+       // let utente = await fetch("/utente/" + userId);
+        let result = await Promise.all([
+          fetch(createNav(request.data.Date)),
+          fetch(createGlobal(request.data.Global)),
+          fetch(createCountries(request.data.Countries))
+        ]);
+        console.log(request);
+        console.log(result);
+        return {
+          request,
+          global: result[0],
+          country: result[1]
+        };
     } catch (error) {
-        console.error(error);
+        console.log(error);
     }
+ }
+
+test(url);
+
+function createNav(response){
+    let data = response;
+    document.getElementById('data').innerHTML = splitData(data);
+    return
 }
 
 // Funzione che crea la sezione global
 function createGlobal(response) {
-    const global = response.data.Global;
+    const global = response;
     const divContainer = document.getElementById("sectionGlobal");
     const globalData = [global.NewConfirmed, global.TotalConfirmed, global.NewDeaths, global.TotalDeaths, global.NewRecovered, global.TotalRecovered];
     const titleData = ['Nuovi Confermati', 'Totale Confermati', 'Nuovi Decessi', 'Totale Decessi', 'Nuovi Ricoveri', 'Totale Ricoveri'];
@@ -51,12 +68,12 @@ function createGlobal(response) {
         item.appendChild(value)
         divContainer.appendChild(item);
     }
-
+    return
 }
 
 // Funzione che crea la tabella
 function createCountries(response) {
-    const countries = response.data.Countries;
+    const countries = response;
     var numberOfCountries = countries.length;
 
     if (numberOfCountries > 0) {
@@ -111,6 +128,7 @@ function createCountries(response) {
         divContainer.innerHTML = "";
         divContainer.appendChild(table);
     }
+    return
 }
 
 // Funzione che splitta la data e la converte
@@ -125,5 +143,3 @@ const splitData = (x) => {
     // console.log('Data convertita' + ' ' + result);
 	return result;
 };
-
-getData();
