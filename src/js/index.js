@@ -1,4 +1,5 @@
 import '../scss/style.scss';
+import Test1 from './Template/index';
 
 import img1 from '../assets/icons/01.svg';
 import img2 from '../assets/icons/02.svg';
@@ -30,7 +31,7 @@ async function test(url) {
     } catch (error) {
         console.log(error);
     }
- }
+}
 
 test(url);
 
@@ -127,7 +128,6 @@ function createCountries(response) {
         for (var i = 0; i < col.length; i++) {
             var th = document.createElement("th");
             th.innerHTML = col[i];
-            th.onclick = function() { sortTable(0) };
             hRow.appendChild(th);
         }
         tHead.appendChild(hRow);

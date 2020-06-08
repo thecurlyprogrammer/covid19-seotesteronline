@@ -1,9 +1,10 @@
-@import './components/navbar';
-@import './components/global';
-@import './components/nazione';
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap');
+@import "./components/navbar";
+@import "./components/global";
+@import "./components/nazione";
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap");
 
-html, body{
+html,
+body {
   margin: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }

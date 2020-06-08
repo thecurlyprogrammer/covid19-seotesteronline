@@ -1,25 +1,26 @@
 $nazione-background: #f5f6fa;
 
-.nazioneContainer{
+.nazioneContainer {
   // width: 100%;
   padding: 16px;
   background-color: $nazione-background;
-  .nazioneTitle{
+  .nazioneTitle {
     text-align: center;
     font-size: 2em;
   }
-  .filtroContainer{
+  .filtroContainer {
     // width: 100%;
   }
 }
 
-td, th {
+td,
+th {
   border-bottom: 1px solid #dddddd;
   text-align: left;
   padding: 8px;
 }
 
-table{
+table {
   width: 100%;
   padding: 16px;
 }
