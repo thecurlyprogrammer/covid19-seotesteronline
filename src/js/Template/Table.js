@@ -30,10 +30,17 @@ class Table extends Template {
   }
 
   print() {
+      // Apro table
       const init = '<table>';
+      // Aggiungo le colonne
+      const column = this.columns[0].name;
+      // Aggiungo le righe
       const rows = this.rows;
+      // Chiudo table
       const end = '</table>';
-      const htmlTable = init + rows + end;
+
+      // Concateno e append
+      const htmlTable = init + column + rows + end;
       console.log(htmlTable);
       this.append(this.parent, htmlTable);
   }
@@ -43,7 +50,7 @@ class Table extends Template {
           throw new Error('columnName must be a string');
       }
 
-      columns.push({
+      this.columns.push({
           name: columnName,
           isSortable,
       })
@@ -65,5 +72,6 @@ class Table extends Template {
 const parent = document.createElement("div");
 
 const myTable = new Table(parent)
+myTable.addColumn('<tr><th>Title</th></tr>');
 myTable.addRow('<tr><td>Data 1</td></tr>');
 myTable.print();

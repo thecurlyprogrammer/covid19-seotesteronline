@@ -21,8 +21,8 @@ async function test(url) {
           fetch(createGlobal(request.data.Global)),
           fetch(createCountries(request.data.Countries))
         ]);
-        console.log(request);
-        console.log(result);
+        // console.log(request);
+        // console.log(result);
         return {
           request,
           global: result[0],
