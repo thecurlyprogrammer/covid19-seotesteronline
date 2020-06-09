@@ -1,5 +1,5 @@
 import '../scss/style.scss';
-import Test1 from './Template/index';
+import Template from './Template/Table.js';
 
 import img1 from '../assets/icons/01.svg';
 import img2 from '../assets/icons/02.svg';
@@ -10,6 +10,9 @@ import img6 from '../assets/icons/06.svg';
 
 const axios = require('axios');
 const url = 'https://api.covid19api.com/summary';
+
+const parent = document.createElement("div");
+let table = new Template(parent)
 
 async function test(url) {
     let request;
@@ -100,60 +103,17 @@ function createGlobal(response) {
 // Funzione che crea la tabella
 function createCountries(response) {
     const countries = response;
-    var numberOfCountries = countries.length;
+    console.log(countries);
+    countries.forEach(addToTable);
 
-    if (numberOfCountries > 0) {
+    const addTable = table.printTable();
+    table.append(parent, addTable);
 
-        // Creo la tabella
-        var table = document.createElement("table");
-        table.setAttribute('id', 'countriesTable');
-        // Prendo l'header
+}
 
-        var col = [];
-        for (var i = 0; i < numberOfCountries; i++) {
-            for (var key in countries[i]) {
-                if (col.indexOf(key) === -1) {
-                    col.push(key);
-                }
-            }
-        }
-
-        // Table head
-        var tHead = document.createElement("thead");
-
-        // Creo la riga del table head
-        var hRow = document.createElement("tr");
-        // Aggiungo le colonne al table head
-
-        for (var i = 0; i < col.length; i++) {
-            var th = document.createElement("th");
-            th.innerHTML = col[i];
-            hRow.appendChild(th);
-        }
-        tHead.appendChild(hRow);
-        table.appendChild(tHead);
-
-        // Creo il table body
-        var tBody = document.createElement("tbody");
-
-        // Aggiungo le righe al tbody
-        for (var i = 0; i < numberOfCountries; i++) {
-            var bRow = document.createElement("tr"); // Creo un nuovo record
-            for (var j = 0; j < col.length; j++) {
-                var td = document.createElement("td");
-                td.innerHTML = countries[i][col[j]];
-                bRow.appendChild(td);
-            }
-            tBody.appendChild(bRow)
-        }
-        table.appendChild(tBody);
-
-        // Aggiungo la tabella al div
-        var divContainer = document.getElementById("countries");
-        divContainer.innerHTML = "";
-        divContainer.appendChild(table);
-    }
-    return
+function addToTable(countries){
+    table.addRow(countries.Country);
+    //console.log(countries);
 }
 
 // Funzione che splitta la data e la converte

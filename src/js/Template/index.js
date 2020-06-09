@@ -1,5 +1,5 @@
-import Table from "./Table";
+import Template from "./Table";
 
 export {
-  Table,
+  Template,
 };

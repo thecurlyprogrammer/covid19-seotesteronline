@@ -1,4 +1,18 @@
 export default class Template {
+
+    columns = [];
+    rows = [];
+    parent;
+    
+    constructor(parent) {
+
+        if (!this.isAValidHtmlElement(parent)) {
+            throw new Error('parent must be a HTMLDivElement object');
+        }
+
+        this.parent = parent;
+    }
+
     append(parent, html) {
         if (!(parent instanceof HTMLDivElement)) {
             throw new Error('parent must be a HTMLDivElement object');
@@ -11,22 +25,6 @@ export default class Template {
         // Append della tabella sul div con id test
         const main = document.getElementById('test');
         main.innerHTML = html;
-    }
-
-}
-
-class Table extends Template {
-    columns = [];
-    rows = [];
-    parent;
-
-    constructor(parent) {
-        super('test');
-        if (!this.isAValidHtmlElement(parent)) {
-            throw new Error('parent must be a HTMLDivElement object');
-        }
-
-        this.parent = parent;
     }
 
     printTable() {
@@ -44,7 +42,7 @@ class Table extends Template {
             }
 
             if (column.isSortable) {
-                formattedColumns += `<th>${column.name}<i class="fa-arrow"></i></th>`;
+                formattedColumns += `<th>${column.name} <i class="fas fa-sort-down"></i></th>`;
             } else {
                 formattedColumns += `<th>${column.name}</th>`;
             }
@@ -85,30 +83,12 @@ class Table extends Template {
     }
 }
 
+/*
 const parent = document.createElement("div");
 
-const myTable = new Table(parent)
+const myTable = new Template(parent)
 myTable.addColumn('Title', true);
 myTable.addRow('Data');
 const pippo = myTable.printTable();
 myTable.append(parent, pippo)
-/*
-  addColumn(columnName, isSortable = false) {
-      if(typeof columnName !== 'string') {
-          throw new Error('columnName must be a string');
-      }
-
-      this.columns.push({
-          name: columnName,
-          isSortable,
-      })
-  }
-
-  addRow(row) {
-      if(typeof row !== 'string') {
-          throw new Error('row must be a string');
-      }
-
-      this.rows.push(row);
-  }
 */
