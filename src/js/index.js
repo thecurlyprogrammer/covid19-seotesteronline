@@ -100,18 +100,23 @@ function createGlobal(response) {
     return
 }
 
+let riga = [];
+
 // Funzione che crea la tabella
-function createCountries(response) {
+const createCountries = (response) => {
     const countries = response;
-    console.log(countries);
-    countries.forEach(addToTable);
+    const oggetto = [];
+    // Aggiungo alla 
+    countries.forEach(addRowToTable);
 
     const addTable = table.printTable();
     table.append(parent, addTable);
 
 }
 
-function addToTable(countries){
+
+let addRowToTable = (countries) => {
+    // riga.push(countries.Country);
     table.addRow(countries.Country);
     //console.log(countries);
 }

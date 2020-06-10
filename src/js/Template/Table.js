@@ -23,7 +23,7 @@ export default class Template {
         }
 
         // Append della tabella sul div con id test
-        const main = document.getElementById('test');
+        const main = document.getElementById('countries');
         main.innerHTML = html;
     }
 
@@ -54,10 +54,10 @@ export default class Template {
     getBody() {
         let formattedColumns = '';
         for (const row of this.rows) {
-            formattedColumns += `<td>${row}</td>`;
+            formattedColumns += `<tr><td>${row}</td></tr>`;
         }
         console.log(formattedColumns);
-        return `<tr>${formattedColumns}</tr>`;
+        return formattedColumns;
     }
 
     addColumn(columnName, isSortable = false) {
