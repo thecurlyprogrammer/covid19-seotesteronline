@@ -1,6 +1,7 @@
 import '../scss/style.scss';
 import Table from '../js/Template/Table/Table.js';
 import Row from '../js/Template/Table/Row.js';
+import Column from '../js/Template/Table/Column.js';
 
 import img1 from '../assets/icons/01.svg';
 import img2 from '../assets/icons/02.svg';
@@ -101,13 +102,14 @@ function createGlobal(response) {
     return
 }
 
-let riga = [];
+const header = ['Country', 'New Confirmed', 'Total Confirmed', 'New Deaths', 'Total Deaths', 'New Recovered', 'Total Recovered'];
 
 // Funzione che crea la tabella
 const createCountries = (response) => {
     const countries = response;
     const oggetto = [];
     
+    header.forEach(addHeaderToTable);
     // Counter of response
     countries.forEach(addRowToTable);
 
@@ -115,8 +117,14 @@ const createCountries = (response) => {
     table.append(parent, addTable);
 }
 
+const addHeaderToTable = (header) => {
+    const myColumn = new Column(header);
+    const getHeader = myColumn.getName();
+    table.addColumn(getHeader);
+}
+
 let addRowToTable = (countries) => {
-    const myRow = new Row(countries.Country, countries.NewConfirmed, countries.NewDeaths, countries.TotalDeaths, countries.TotalDeaths, countries.NewRecovered, countries.TotalRecovered);
+    const myRow = new Row(countries.Country, countries.NewConfirmed, countries.TotalConfirmed, countries.TotalDeaths, countries.TotalDeaths, countries.NewRecovered, countries.TotalRecovered);
     let getRow = myRow.getAllData();
     
     // Append Row

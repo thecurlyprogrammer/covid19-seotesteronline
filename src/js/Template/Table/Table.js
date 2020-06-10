@@ -30,7 +30,7 @@ export default class Table {
     printTable() {
         const tableHeader = this.getHeader();
         const tableBody = this.getBody();
-        // console.log(tableHeader);
+        console.log(tableHeader);
         return `<table>${tableHeader}${tableBody}</table>`;
     }
 
@@ -47,7 +47,7 @@ export default class Table {
                 formattedColumns += `<th>${column.name}</th>`;
             }
         }
-        // console.log(formattedColumns);
+        console.log(this.columns);
         return `<tr>${formattedColumns}</tr>`;
     }
 
@@ -64,7 +64,7 @@ export default class Table {
         if (typeof columnName !== 'string') {
             throw new Error('columnName must be a string');
         }
-
+        console.log(columnName);
         this.columns.push({
             name: columnName,
             isSortable,
