@@ -1,4 +1,4 @@
-export default class Template {
+export default class Table {
 
     columns = [];
     rows = [];
@@ -30,7 +30,7 @@ export default class Template {
     printTable() {
         const tableHeader = this.getHeader();
         const tableBody = this.getBody();
-        console.log(tableHeader);
+        // console.log(tableHeader);
         return `<table>${tableHeader}${tableBody}</table>`;
     }
 
@@ -47,16 +47,16 @@ export default class Template {
                 formattedColumns += `<th>${column.name}</th>`;
             }
         }
-        console.log(formattedColumns);
+        // console.log(formattedColumns);
         return `<tr>${formattedColumns}</tr>`;
     }
 
     getBody() {
         let formattedColumns = '';
         for (const row of this.rows) {
-            formattedColumns += `<tr><td>${row}</td></tr>`;
+            formattedColumns += row;
         }
-        console.log(formattedColumns);
+        // console.log(formattedColumns);
         return formattedColumns;
     }
 

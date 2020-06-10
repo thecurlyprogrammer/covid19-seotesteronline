@@ -1,5 +1,6 @@
 import '../scss/style.scss';
-import Template from './Template/Table.js';
+import Table from '../js/Template/Table/Table.js';
+import Row from '../js/Template/Table/Row.js';
 
 import img1 from '../assets/icons/01.svg';
 import img2 from '../assets/icons/02.svg';
@@ -12,7 +13,7 @@ const axios = require('axios');
 const url = 'https://api.covid19api.com/summary';
 
 const parent = document.createElement("div");
-let table = new Template(parent)
+let table = new Table(parent)
 
 async function test(url) {
     let request;
@@ -106,19 +107,20 @@ let riga = [];
 const createCountries = (response) => {
     const countries = response;
     const oggetto = [];
-    // Aggiungo alla 
+    
+    // Counter of response
     countries.forEach(addRowToTable);
 
     const addTable = table.printTable();
     table.append(parent, addTable);
-
 }
 
-
 let addRowToTable = (countries) => {
-    // riga.push(countries.Country);
-    table.addRow(countries.Country);
-    //console.log(countries);
+    const myRow = new Row(countries.Country, countries.NewConfirmed, countries.NewDeaths, countries.TotalDeaths, countries.TotalDeaths, countries.NewRecovered, countries.TotalRecovered);
+    let getRow = myRow.getAllData();
+    
+    // Append Row
+    table.addRow(getRow);
 }
 
 // Funzione che splitta la data e la converte
