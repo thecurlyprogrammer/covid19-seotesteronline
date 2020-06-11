@@ -2,12 +2,13 @@ export default class Column {
   name = '';
   isSortable = false;
 
-  constructor(name) {
+  constructor(name, isSortable) {
       if (typeof name !== 'string' || name == '') {
           throw new Error('name must be a string');
       }
 
       this.name = name;
+      this.isSortable = isSortable;
   }
 
   setSortable(isSortable) {
@@ -19,7 +20,14 @@ export default class Column {
   }
 
   getName(){
-    console.log('Nome ' + this.name);
+    // console.log('Nome ' + this.name);
     return this.name;
+  }
+
+  getAll(){
+    return {
+      name: this.getName(),
+      isSortable: this.setSortable(isSortable)
+    };
   }
 }

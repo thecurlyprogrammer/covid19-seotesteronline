@@ -58,7 +58,7 @@ export default class Row {
     // console.log(this.totalRecovered);
     return this.totalRecovered;
   }
-
+  /*
   getAllData(){
     const row = '<tr><td>' + this.getCountry() + '</td>'
     +'<td>' + this.getNewConfirmed() + '</td>'
@@ -69,5 +69,17 @@ export default class Row {
     +'<td>' + this.getTotalRecovered() + '</td></tr>';
     // console.log(row);
     return row;
+  }*/
+  getAllData = () => {
+    return `<tr>
+    <td>${this.getCountry()}</td>
+    <td>${this.getNewConfirmed()}</td>
+    <td>${this.getTotalConfirmed()}</td>
+    <td>${this.getNewDeaths()}</td>
+    <td>${this.getTotalDeaths()}</td>
+    <td>${this.getNewRecovered()}</td>
+    <td>${this.getTotalRecovered()}</td>
+    </tr>`;
+    // console.log(row);
   }
 }

@@ -102,14 +102,45 @@ function createGlobal(response) {
     return
 }
 
-const header = ['Country', 'New Confirmed', 'Total Confirmed', 'New Deaths', 'Total Deaths', 'New Recovered', 'Total Recovered'];
+// const header = ['Country', 'New Confirmed', 'Total Confirmed', 'New Deaths', 'Total Deaths', 'New Recovered', 'Total Recovered'];
+
+const header = [
+    {
+        name: 'Country',
+        isSortable: true,
+    },
+    {
+        name: 'New Confirmed',
+        isSortable: false,
+    },
+    {
+        name: 'Total Confirmed',
+        isSortable: true,
+    },
+    {
+        name: 'New Deaths',
+        isSortable: true,
+    },
+    {
+        name: 'Total Deaths',
+        isSortable: true,
+    },
+    {
+        name: 'New Recovered',
+        isSortable: true,
+    },
+    {
+        name: 'Total Recovered',
+        isSortable: true,
+    }
+]
 
 // Funzione che crea la tabella
 const createCountries = (response) => {
     const countries = response;
     const oggetto = [];
     
-    header.forEach(addHeaderToTable);
+    // header.forEach(addHeaderToTable);
     // Counter of response
     countries.forEach(addRowToTable);
 
@@ -118,8 +149,9 @@ const createCountries = (response) => {
 }
 
 const addHeaderToTable = (header) => {
-    const myColumn = new Column(header);
-    const getHeader = myColumn.getName();
+    const myColumn = new Column(header.name, header.isSortable);
+    const getHeader = myColumn.getAll();
+    console.log(getHeader);
     table.addColumn(getHeader);
 }
 
