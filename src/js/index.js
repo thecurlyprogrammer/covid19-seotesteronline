@@ -115,7 +115,7 @@ const header = [
     },
     {
         name: 'Total Confirmed',
-        isSortable: true,
+        isSortable: false,
     },
     {
         name: 'New Deaths',
@@ -140,7 +140,7 @@ const createCountries = (response) => {
     const countries = response;
     const oggetto = [];
     
-    // header.forEach(addHeaderToTable);
+    header.forEach(addHeaderToTable);
     // Counter of response
     countries.forEach(addRowToTable);
 
@@ -149,29 +149,26 @@ const createCountries = (response) => {
 }
 
 const addHeaderToTable = (header) => {
-    const myColumn = new Column(header.name, header.isSortable);
-    const getHeader = myColumn.getAll();
-    console.log(getHeader);
-    table.addColumn(getHeader);
+    const myColumn = new Column(header);
+    const [x, y] = myColumn.getHtml();
+    table.addColumn(x, y);
 }
 
-let addRowToTable = (countries) => {
+const addRowToTable = (countries) => {
     const myRow = new Row(countries);
-    let getRow = myRow.getHtml();
-    
-    // Append Row
+    const getRow = myRow.getHtml();
     table.addRow(getRow);
 }
 
 // Funzione che splitta la data e la converte
 const splitData = (x) => {
-    let string = x.split('T');
-    let left = string[0];
-    let split = left.split('-');
-    let day = split[2];
-    let month = split[1];
-    let year = split[0];
-    let result = 'Data: ' + day + '-' + month + '-' + year;
+    const string = x.split('T');
+    const left = string[0];
+    const split = left.split('-');
+    const day = split[2];
+    const month = split[1];
+    const year = split[0];
+    const result = 'Data: ' + day + '-' + month + '-' + year;
     // console.log('Data convertita' + ' ' + result);
 	return result;
 };

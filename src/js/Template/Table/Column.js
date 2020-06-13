@@ -2,20 +2,20 @@ export default class Column {
   name = '';
   isSortable = false;
 
-  constructor(name, isSortable) {
-      if (typeof name !== 'string' || name == '') {
+  constructor(header) {
+      if (typeof header.name !== 'string' || header.name == '') {
           throw new Error('name must be a string');
       }
 
-      this.name = name;
-      this.isSortable = isSortable;
+      this.name = header.name;
+      this.isSortable = header.isSortable;
   }
 
   setSortable(isSortable) {
       if (typeof isSortable !== 'boolean') {
           throw new Error('isSortable must be a boolean');
       }
-
+      // console.log(this.isSortable);
       return this.isSortable = isSortable;
   }
 
@@ -25,9 +25,6 @@ export default class Column {
   }
 
   getHtml(){
-    return {
-      name: this.getName(),
-      isSortable: this.setSortable(this.isSortable)
-    };
+    return [this.getName(), this.setSortable(this.isSortable)];
   }
 }

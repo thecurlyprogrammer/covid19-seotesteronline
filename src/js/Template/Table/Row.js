@@ -1,5 +1,5 @@
 export default class Row {
-  country = 'pippo';
+  country = 'No Country';
   newConfirmed = 0;
   totalConfirmed = 0;
   newDeaths = 0;

@@ -60,8 +60,8 @@ export default class Table {
         return formattedColumns;
     }
 
-    addColumn(columnName, isSortable = false) {
-        console.log(columnName);
+    addColumn(columnName, isSortable) {
+        // console.log(columnName, isSortable);
         if (typeof columnName !== 'string') {
             throw new Error('columnName must be a string');
         }
