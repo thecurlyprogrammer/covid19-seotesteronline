@@ -59,7 +59,17 @@ export default class Row {
   }
 
   getHtml = () => {
-    return `<tr>
+    return {
+      country: this.getCountry(),
+      newConfirmed: this.getNewConfirmed(),
+      totalConfirmed: this.getTotalConfirmed(),
+      newDeaths: this.getNewDeaths(),
+      totalDeaths: this.getTotalDeaths(),
+      newRecovered: this.getNewRecovered(),
+      totalRecovered: this.getTotalRecovered()
+    };
+    /*
+    `<tr>
     <td>${this.getCountry()}</td>
     <td>${this.getNewConfirmed()}</td>
     <td>${this.getTotalConfirmed()}</td>
@@ -68,6 +78,7 @@ export default class Row {
     <td>${this.getNewRecovered()}</td>
     <td>${this.getTotalRecovered()}</td>
     </tr>`;
+    */
   }
 
 }

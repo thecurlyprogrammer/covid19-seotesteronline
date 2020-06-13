@@ -54,9 +54,19 @@ export default class Table {
     getBody() {
         let formattedColumns = '';
         for (const row of this.rows) {
-            formattedColumns += row;
+            formattedColumns += `
+            <tr>
+                <td>${row.country}</td>
+                <td>${row.newConfirmed}</td>
+                <td>${row.totalConfirmed}</td>
+                <td>${row.newDeaths}</td>
+                <td>${row.totalDeaths}</td>
+                <td>${row.newRecovered}</td>
+                <td>${row.totalRecovered}</td>
+            </tr>
+            `;
         }
-        // console.log(formattedColumns);
+        console.log(formattedColumns);
         return formattedColumns;
     }
 
@@ -71,9 +81,10 @@ export default class Table {
         })
     }
 
+    // Ho modificato questa funzione, adesso passo un array anzichè una stringa
     addRow(row) {
-        if (typeof row !== 'string') {
-            throw new Error('row must be a string');
+        if (typeof row !== 'object') {
+            throw new Error('row must be an array');
         }
 
         this.rows.push(row);
