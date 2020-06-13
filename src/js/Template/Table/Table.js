@@ -1,6 +1,7 @@
 export default class Table {
 
     columns = [];
+    // rows è un array di oggetti
     rows = [];
     parent;
     
@@ -31,7 +32,16 @@ export default class Table {
         const tableHeader = this.getHeader();
         const tableBody = this.getBody();
         // console.log(tableHeader);
-        return `<table>${tableHeader}${tableBody}</table>`;
+        return `
+        <table>
+            <thead>
+            ${tableHeader}
+            </thead>
+            <tbody>
+            ${tableBody}
+            </tbody>
+        </table>
+        `;
     }
 
     getHeader() {
@@ -52,9 +62,9 @@ export default class Table {
     }
 
     getBody() {
-        let formattedColumns = '';
+        let formattedRows = '';
         for (const row of this.rows) {
-            formattedColumns += `
+            formattedRows += `
             <tr>
                 <td>${row.country}</td>
                 <td>${row.newConfirmed}</td>
@@ -66,8 +76,8 @@ export default class Table {
             </tr>
             `;
         }
-        console.log(formattedColumns);
-        return formattedColumns;
+        // console.log(formattedRows);
+        return formattedRows;
     }
 
     addColumn(columnName, isSortable) {
@@ -89,17 +99,24 @@ export default class Table {
 
         this.rows.push(row);
     }
+
+    sort = (valuePath) => {
+        const array = this.rows;
+        let path = valuePath.split('.')  
+        console.log(path);
+        return array.sort((a, b) => {
+           return getValue(b,path) -  getValue(a,path)
+        });
+      
+        function getValue(obj, path){
+          path.forEach(path => obj = obj[path])
+          return obj;
+        }
+    }
+      
+      
+
     isAValidHtmlElement(parent) {
         return parent instanceof HTMLDivElement || parent instanceof HTMLBodyElement;
     }
 }
-
-/*
-const parent = document.createElement("div");
-
-const myTable = new Template(parent)
-myTable.addColumn('Title', true);
-myTable.addRow('Data');
-const pippo = myTable.printTable();
-myTable.append(parent, pippo)
-*/

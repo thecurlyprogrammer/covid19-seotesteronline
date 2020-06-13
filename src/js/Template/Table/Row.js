@@ -68,17 +68,5 @@ export default class Row {
       newRecovered: this.getNewRecovered(),
       totalRecovered: this.getTotalRecovered()
     };
-    /*
-    `<tr>
-    <td>${this.getCountry()}</td>
-    <td>${this.getNewConfirmed()}</td>
-    <td>${this.getTotalConfirmed()}</td>
-    <td>${this.getNewDeaths()}</td>
-    <td>${this.getTotalDeaths()}</td>
-    <td>${this.getNewRecovered()}</td>
-    <td>${this.getTotalRecovered()}</td>
-    </tr>`;
-    */
   }
-
 }
