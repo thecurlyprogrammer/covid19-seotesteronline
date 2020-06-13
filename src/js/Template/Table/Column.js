@@ -16,7 +16,7 @@ export default class Column {
           throw new Error('isSortable must be a boolean');
       }
 
-      this.isSortable = isSortable;
+      return this.isSortable = isSortable;
   }
 
   getName(){
@@ -24,10 +24,10 @@ export default class Column {
     return this.name;
   }
 
-  getAll(){
+  getHtml(){
     return {
       name: this.getName(),
-      isSortable: this.setSortable(isSortable)
+      isSortable: this.setSortable(this.isSortable)
     };
   }
 }

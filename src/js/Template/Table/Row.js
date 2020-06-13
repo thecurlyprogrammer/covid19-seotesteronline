@@ -9,21 +9,20 @@ export default class Row {
 
 
 
-  constructor(country, newConfirmed, totalConfirmed, newDeaths, totalDeaths, newRecovered, totalRecovered) {
-      if (typeof country !== 'string' || country == '') {
+  constructor(country) {
+      if (typeof country.Country !== 'string' || country.Country == '') {
           throw new Error('country must be a string');
       }
 
-      this.country = country;
-      this.newConfirmed = newConfirmed;
-      this.totalConfirmed = totalConfirmed;
-      this.newDeaths = newDeaths;
-      this.totalDeaths = totalDeaths;
-      this.newRecovered = newRecovered;
-      this.totalRecovered = totalRecovered;
-
+      this.country = country.Country;
+      this.newConfirmed = country.NewConfirmed;
+      this.totalConfirmed = country.TotalConfirmed;
+      this.newDeaths = country.NewDeaths;
+      this.totalDeaths = country.TotalDeaths;
+      this.newRecovered = country.NewRecovered;
+      this.totalRecovered = country.TotalRecovered;
   }
-
+  
   getCountry(){
     // console.log(this.country);
     return this.country;
@@ -58,19 +57,8 @@ export default class Row {
     // console.log(this.totalRecovered);
     return this.totalRecovered;
   }
-  /*
-  getAllData(){
-    const row = '<tr><td>' + this.getCountry() + '</td>'
-    +'<td>' + this.getNewConfirmed() + '</td>'
-    +'<td>' + this.getTotalConfirmed() + '</td>'
-    +'<td>' + this.getNewDeaths() + '</td>'
-    +'<td>' + this.getTotalDeaths() + '</td>'
-    +'<td>' + this.getNewRecovered() + '</td>'
-    +'<td>' + this.getTotalRecovered() + '</td></tr>';
-    // console.log(row);
-    return row;
-  }*/
-  getAllData = () => {
+
+  getHtml = () => {
     return `<tr>
     <td>${this.getCountry()}</td>
     <td>${this.getNewConfirmed()}</td>
@@ -80,6 +68,6 @@ export default class Row {
     <td>${this.getNewRecovered()}</td>
     <td>${this.getTotalRecovered()}</td>
     </tr>`;
-    // console.log(row);
   }
+
 }

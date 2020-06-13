@@ -61,10 +61,10 @@ export default class Table {
     }
 
     addColumn(columnName, isSortable = false) {
+        console.log(columnName);
         if (typeof columnName !== 'string') {
             throw new Error('columnName must be a string');
         }
-        // console.log(columnName);
         this.columns.push({
             name: columnName,
             isSortable,

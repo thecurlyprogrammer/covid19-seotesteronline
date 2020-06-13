@@ -156,8 +156,8 @@ const addHeaderToTable = (header) => {
 }
 
 let addRowToTable = (countries) => {
-    const myRow = new Row(countries.Country, countries.NewConfirmed, countries.TotalConfirmed, countries.TotalDeaths, countries.TotalDeaths, countries.NewRecovered, countries.TotalRecovered);
-    let getRow = myRow.getAllData();
+    const myRow = new Row(countries);
+    let getRow = myRow.getHtml();
     
     // Append Row
     table.addRow(getRow);
