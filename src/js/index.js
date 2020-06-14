@@ -1,4 +1,5 @@
 import '../scss/style.scss';
+import Global from '../js/Template/Global/Global.js';
 import Table from '../js/Template/Table/Table.js';
 import Row from '../js/Template/Table/Row.js';
 import Column from '../js/Template/Table/Column.js';
@@ -13,8 +14,9 @@ import img6 from '../assets/icons/06.svg';
 const axios = require('axios');
 const url = 'https://api.covid19api.com/summary';
 
-const parent = document.createElement("div");
-let table = new Table(parent)
+let parent = document.createElement("div");
+let global = new Global(parent);
+let table = new Table(parent);
 
 async function test(url) {
     let request;
@@ -46,6 +48,122 @@ function createNav(response){
     return
 }
 
+// const header = ['Country', 'New Confirmed', 'Total Confirmed', 'New Deaths', 'Total Deaths', 'New Recovered', 'Total Recovered'];
+
+const header = [
+    {
+        name: 'Country',
+        isSortable: true,
+    },
+    {
+        name: 'New Confirmed',
+        isSortable: false,
+    },
+    {
+        name: 'Total Confirmed',
+        isSortable: false,
+    },
+    {
+        name: 'New Deaths',
+        isSortable: true,
+    },
+    {
+        name: 'Total Deaths',
+        isSortable: true,
+    },
+    {
+        name: 'New Recovered',
+        isSortable: true,
+    },
+    {
+        name: 'Total Recovered',
+        isSortable: true,
+    }
+]
+
+const createGlobal = (response) => {
+    const data = response;
+    const globalData = [
+        {
+            data: data.NewConfirmed,
+            title: 'Nuovi Confermati',
+            icon: 1,
+        },
+        {
+            data: data.TotalConfirmed,
+            title: 'Totale Confermati',
+            icon: 2,
+        },
+        {
+            data: data.NewDeaths,
+            title: 'Nuovi Decessi',
+            icon: 3,
+        },
+        {
+            data: data.TotalDeaths,
+            title: 'Totale Confermati',
+            icon: 4,
+        },
+        {
+            data: data.NewRecovered,
+            title: 'Nuovi Ricoveri',
+            icon: 5,
+        },
+        {
+            data: data.TotalRecovered,
+            title: 'Totale Confermati',
+            icon: 6,
+        }
+    ]
+    globalData.forEach(addGlobal);
+    // console.log(pippo);
+    const setBoxes = global.setBox();
+    global.append(parent, setBoxes);
+}
+
+const addGlobal = (data) => {
+    global.addBox(data.data, data.title ,data.icon);
+}
+
+// Funzione che crea la tabella
+const createCountries = (response) => {
+    const countries = response;
+    const oggetto = [];
+    
+    header.forEach(addHeaderToTable);
+    // Counter of response
+    countries.forEach(addRowToTable);
+
+    const addTable = table.printTable();
+    table.append(parent, addTable);
+}
+
+const addHeaderToTable = (header) => {
+    const myColumn = new Column(header);
+    const [x, y] = myColumn.getHtml();
+    table.addColumn(x, y);
+}
+
+const addRowToTable = (countries) => {
+    const myRow = new Row(countries);
+    const getRow = myRow.getHtml();
+    table.addRow(getRow);
+}
+
+// Funzione che splitta la data e la converte
+const splitData = (x) => {
+    const string = x.split('T');
+    const left = string[0];
+    const split = left.split('-');
+    const day = split[2];
+    const month = split[1];
+    const year = split[0];
+    const result = 'Data: ' + day + '-' + month + '-' + year;
+    // console.log('Data convertita' + ' ' + result);
+	return result;
+};
+
+/*
 // Funzione che crea la sezione global
 function createGlobal(response) {
     const global = response;
@@ -101,74 +219,4 @@ function createGlobal(response) {
     }
     return
 }
-
-// const header = ['Country', 'New Confirmed', 'Total Confirmed', 'New Deaths', 'Total Deaths', 'New Recovered', 'Total Recovered'];
-
-const header = [
-    {
-        name: 'Country',
-        isSortable: true,
-    },
-    {
-        name: 'New Confirmed',
-        isSortable: false,
-    },
-    {
-        name: 'Total Confirmed',
-        isSortable: false,
-    },
-    {
-        name: 'New Deaths',
-        isSortable: true,
-    },
-    {
-        name: 'Total Deaths',
-        isSortable: true,
-    },
-    {
-        name: 'New Recovered',
-        isSortable: true,
-    },
-    {
-        name: 'Total Recovered',
-        isSortable: true,
-    }
-]
-
-// Funzione che crea la tabella
-const createCountries = (response) => {
-    const countries = response;
-    const oggetto = [];
-    
-    header.forEach(addHeaderToTable);
-    // Counter of response
-    countries.forEach(addRowToTable);
-
-    const addTable = table.printTable();
-    table.append(parent, addTable);
-}
-
-const addHeaderToTable = (header) => {
-    const myColumn = new Column(header);
-    const [x, y] = myColumn.getHtml();
-    table.addColumn(x, y);
-}
-
-const addRowToTable = (countries) => {
-    const myRow = new Row(countries);
-    const getRow = myRow.getHtml();
-    table.addRow(getRow);
-}
-
-// Funzione che splitta la data e la converte
-const splitData = (x) => {
-    const string = x.split('T');
-    const left = string[0];
-    const split = left.split('-');
-    const day = split[2];
-    const month = split[1];
-    const year = split[0];
-    const result = 'Data: ' + day + '-' + month + '-' + year;
-    // console.log('Data convertita' + ' ' + result);
-	return result;
-};
+*/
