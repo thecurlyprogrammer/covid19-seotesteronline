@@ -14,22 +14,20 @@ import img6 from '../assets/icons/06.svg';
 const axios = require('axios');
 const url = 'https://api.covid19api.com/summary';
 
-let parent = document.createElement("div");
-let global = new Global(parent);
-let table = new Table(parent);
+const parent = document.createElement("div");
+const global = new Global(parent);
+const table = new Table(parent);
 
 async function test(url) {
     let request;
     try {
         request = await axios.get(url);
-       // let utente = await fetch("/utente/" + userId);
-        let result = await Promise.all([
+        localStorage.setItem('newConfirmed', request.data.Global.NewConfirmed);
+        const result = await Promise.all([
           fetch(createNav(request.data.Date)),
           fetch(createGlobal(request.data.Global)),
           fetch(createCountries(request.data.Countries))
         ]);
-        // console.log(request);
-        // console.log(result);
         return {
           request,
           global: result[0],
@@ -42,14 +40,15 @@ async function test(url) {
 
 test(url);
 
+
+
 function createNav(response){
-    let data = response;
+    const data = response;
     document.getElementById('data').innerHTML = splitData(data);
     return
 }
 
-// const header = ['Country', 'New Confirmed', 'Total Confirmed', 'New Deaths', 'Total Deaths', 'New Recovered', 'Total Recovered'];
-
+// Table head, Object with name & icon
 const header = [
     {
         name: 'Country',
@@ -116,7 +115,6 @@ const createGlobal = (response) => {
         }
     ]
     globalData.forEach(addGlobal);
-    // console.log(pippo);
     const setBoxes = global.setBox();
     global.append(parent, setBoxes);
 }
@@ -128,12 +126,8 @@ const addGlobal = (data) => {
 // Funzione che crea la tabella
 const createCountries = (response) => {
     const countries = response;
-    const oggetto = [];
-    
     header.forEach(addHeaderToTable);
-    // Counter of response
     countries.forEach(addRowToTable);
-
     const addTable = table.printTable();
     table.append(parent, addTable);
 }
@@ -159,64 +153,5 @@ const splitData = (x) => {
     const month = split[1];
     const year = split[0];
     const result = 'Data: ' + day + '-' + month + '-' + year;
-    // console.log('Data convertita' + ' ' + result);
 	return result;
 };
-
-/*
-// Funzione che crea la sezione global
-function createGlobal(response) {
-    const global = response;
-    const divContainer = document.getElementById("sectionGlobal");
-    const globalData = [
-        {
-            data: global.NewConfirmed,
-            title: 'Nuovi Confermati'
-        },
-        {
-            data: global.TotalConfirmed,
-            title: 'Totale Confermati'
-        },
-        {
-            data: global.NewDeaths,
-            title: 'Nuovi Decessi'
-        },
-        {
-            data: global.TotalDeaths,
-            title: 'Totale Confermati'
-        },
-        {
-            data: global.NewRecovered,
-            title: 'Nuovi Ricoveri'
-        },
-        {
-            data: global.TotalRecovered,
-            title: 'Totale Confermati'
-        }
-    ]
-
-    globalData.forEach(myFunction);
-
-    function myFunction(element, index) {
-        let item = document.createElement("div");
-        item.setAttribute('class', 'globalItem');
-
-        let images = document.createElement("img");
-        images.src = `src/assets/icons/0` + ( index + 1 ) + `.svg`;
-
-        let title = document.createElement("div");
-        title.setAttribute('class', 'itemTitle');
-        title.innerHTML = element.title;
-
-        let value = document.createElement("div");
-        value.setAttribute('class', 'itemData');
-        value.innerHTML = element.data;
-
-        item.appendChild(images);
-        item.appendChild(title);
-        item.appendChild(value)
-        divContainer.appendChild(item);
-    }
-    return
-}
-*/

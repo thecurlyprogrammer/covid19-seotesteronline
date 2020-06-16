@@ -52,7 +52,7 @@ export default class Table {
             }
 
             if (column.isSortable) {
-                formattedColumns += `<th>${column.name} <i class="fas fa-sort-down"></i></th>`;
+                formattedColumns += `<th onclick="sortTest('${column.name}')">${column.name} <i class="fas fa-sort-down"></i></th>`;
             } else {
                 formattedColumns += `<th>${column.name}</th>`;
             }
@@ -100,7 +100,7 @@ export default class Table {
         this.rows.push(row);
     }
 
-    sort = (valuePath) => {
+    tableSort = (valuePath) => {
         const array = this.rows;
         let path = valuePath.split('.')  
         console.log(path);
@@ -114,8 +114,6 @@ export default class Table {
         }
     }
       
-      
-
     isAValidHtmlElement(parent) {
         return parent instanceof HTMLDivElement || parent instanceof HTMLBodyElement;
     }

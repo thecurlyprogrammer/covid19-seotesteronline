@@ -15,12 +15,10 @@ export default class Column {
       if (typeof isSortable !== 'boolean') {
           throw new Error('isSortable must be a boolean');
       }
-      // console.log(this.isSortable);
       return this.isSortable = isSortable;
   }
 
   getName(){
-    // console.log('Nome ' + this.name);
     return this.name;
   }
 

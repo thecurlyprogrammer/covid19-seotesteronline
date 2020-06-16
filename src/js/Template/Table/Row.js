@@ -7,8 +7,6 @@ export default class Row {
   newRecovered = 0;
   totalRecovered = 0;
 
-
-
   constructor(country) {
       if (typeof country.Country !== 'string' || country.Country == '') {
           throw new Error('country must be a string');
