@@ -53,7 +53,7 @@ export default class Global {
   }
 
   addBox = (columnValue, columnTitle, columnImg) => {
-    console.log(columnValue, columnTitle, columnImg);
+    // console.log(columnValue, columnTitle, columnImg);
     if (typeof columnTitle != 'string') {
       throw new Error('columnTitle must be a string');
     }
@@ -67,7 +67,7 @@ export default class Global {
       value: columnValue,
       img: columnImg
     });
-    console.log(this.boxes);
+    // console.log(this.boxes);
   }
 
   // Verifico se il parent è istanza di HTMLDiv e HTMLBody

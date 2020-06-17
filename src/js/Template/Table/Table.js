@@ -103,7 +103,7 @@ export default class Table {
     tableSort = (valuePath) => {
         const array = this.rows;
         let path = valuePath.split('.')  
-        console.log(path);
+        // console.log(path);
         return array.sort((a, b) => {
            return getValue(b,path) -  getValue(a,path)
         });

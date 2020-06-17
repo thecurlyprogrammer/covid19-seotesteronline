@@ -40,7 +40,11 @@ async function test(url) {
 
 test(url);
 
+function sortTest(provola) {
+    console.log('Funziono!' + provola);
+}
 
+sortTest('provola');
 
 function createNav(response){
     const data = response;
