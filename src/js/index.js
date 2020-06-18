@@ -54,11 +54,11 @@ const header = [
     },
     {
         name: 'New Confirmed',
-        isSortable: false,
+        isSortable: true,
     },
     {
         name: 'Total Confirmed',
-        isSortable: false,
+        isSortable: true,
     },
     {
         name: 'New Deaths',

@@ -110,14 +110,19 @@ export default class Table {
         return parent instanceof HTMLDivElement || parent instanceof HTMLBodyElement;
     }
     
+    // Function invoked on click (table head)
     sortRows = (n) => {
-        // console.log(n);
         switch(n) {
             case 'Country':
                 this.sortByValue('country');
                 break;
+            case 'New Confirmed':
+                this.sortByValue('newConfirmed');
+                break;
+            case 'Total Confirmed':
+                this.sortByValue('totalConfirmed');
+                break;
             case 'New Deaths':
-                this.n = 'newDeaths';
                 this.sortByValue('newDeaths');
                 break;
             case 'Total Deaths':
@@ -130,10 +135,11 @@ export default class Table {
                 this.sortByValue('totalRecovered');
                 break;
             default:
-                console.log('Default');
+                return;
         }
     }
 
+    // Function asc or decr
     changeDirection = () => {
         if(this.direction == 0){
             this.direction = 1;
@@ -144,6 +150,7 @@ export default class Table {
         }
     }
     
+    // Sort function
     sortByValue = (n) => {
         const direction = this.changeDirection();
         if(direction === 'asc'){
@@ -158,7 +165,6 @@ export default class Table {
             });
         } else if(direction === 'decr') {
             this.rows.sort(function (a, b) {
-                // console.log(a.country);
                 if(a[n] > b[n]) {
                     return -1;
                 }
