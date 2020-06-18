@@ -18,29 +18,30 @@ const parent = document.createElement("div");
 const global = new Global(parent);
 const table = new Table(parent);
 
-async function test(url) {
+// Get data from API
+async function getData(url) {
     let request;
     try {
         request = await axios.get(url);
         localStorage.setItem('newConfirmed', request.data.Global.NewConfirmed);
         const result = await Promise.all([
-          fetch(createNav(request.data.Date)),
-          fetch(createGlobal(request.data.Global)),
-          fetch(createCountries(request.data.Countries))
+            fetch(createNav(request.data.Date)),
+            fetch(createGlobal(request.data.Global)),
+            fetch(createCountries(request.data.Countries))
         ]);
         return {
-          request,
-          global: result[0],
-          country: result[1]
+            request,
+            global: result[0],
+            country: result[1]
         };
     } catch (error) {
         console.log(error);
     }
 }
 
-test(url);
+getData(url);
 
-function createNav(response){
+function createNav(response) {
     const data = response;
     document.getElementById('data').innerHTML = splitData(data);
     return
@@ -78,6 +79,7 @@ const header = [
     }
 ]
 
+// Create global data section
 const createGlobal = (response) => {
     const data = response;
     const globalData = [
@@ -117,11 +119,12 @@ const createGlobal = (response) => {
     global.append(parent, setBoxes);
 }
 
+// Create box for the global section
 const addGlobal = (data) => {
-    global.addBox(data.data, data.title ,data.icon);
+    global.addBox(data.data, data.title, data.icon);
 }
 
-// Funzione che crea la tabella
+// Create Table function
 const createCountries = (response) => {
     const countries = response;
     header.forEach(addHeaderToTable);
@@ -130,19 +133,21 @@ const createCountries = (response) => {
     table.append(parent, addTable);
 }
 
+// Create table head function
 const addHeaderToTable = (header) => {
     const myColumn = new Column(header);
     const [x, y] = myColumn.getHtml();
     table.addColumn(x, y);
 }
 
+// Create table body function
 const addRowToTable = (countries) => {
     const myRow = new Row(countries);
     const getRow = myRow.getHtml();
     table.addRow(getRow);
 }
 
-// Funzione che splitta la data e la converte
+// Split data function
 const splitData = (x) => {
     const string = x.split('T');
     const left = string[0];
@@ -151,13 +156,15 @@ const splitData = (x) => {
     const month = split[1];
     const year = split[0];
     const result = 'Data: ' + day + '-' + month + '-' + year;
-	return result;
+    return result;
 };
 
-// numeric value parameter
+// Function invoked onclick (table <th>)
 function sortTest(n) {
     table.sortRows(n);
+    // Print table
     const addTable = table.printTable();
+    // Append table to DOM
     table.append(parent, addTable);
 }
 

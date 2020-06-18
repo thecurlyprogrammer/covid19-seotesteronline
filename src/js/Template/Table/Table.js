@@ -1,19 +1,14 @@
 export default class Table {
-
     columns = [];
-    // rows è un array di oggetti
     rows = [];
     parent;
     sortedRows = [];
     direction = 0;
-    n = '';
 
     constructor(parent) {
-
         if (!this.isAValidHtmlElement(parent)) {
             throw new Error('parent must be a HTMLDivElement object');
         }
-
         this.parent = parent;
     }
 
@@ -26,7 +21,7 @@ export default class Table {
             throw new Error('html must be a string');
         }
 
-        // Append della tabella sul div con id test
+        // Append table on div id="countries"
         const main = document.getElementById('countries');
         main.innerHTML = html;
     }
@@ -34,7 +29,6 @@ export default class Table {
     printTable() {
         const tableHeader = this.getHeader();
         const tableBody = this.getBody();
-        // console.log(tableHeader);
         return `
         <table id="myTable">
             <thead>
@@ -56,14 +50,12 @@ export default class Table {
             }
 
             if (column.isSortable) {
-                // console.log(column.name);
                 formattedColumns += `<th onclick="sortTest('${column.name}')">${column.name} <i class="fas fa-sort-down"></i></th>`;
             } else {
                 formattedColumns += `<th>${column.name}</th>`;
             }
             counter += 1;
         }
-        // console.log(this.columns);
         return `<tr>${formattedColumns}</tr>`;
     }
 
@@ -82,12 +74,10 @@ export default class Table {
             </tr>
             `;
         }
-        // console.log(formattedRows);
         return formattedRows;
     }
 
     addColumn(columnName, isSortable) {
-        // console.log(columnName, isSortable);
         if (typeof columnName !== 'string') {
             throw new Error('columnName must be a string');
         }
@@ -97,7 +87,6 @@ export default class Table {
         })
     }
 
-    // Ho modificato questa funzione, adesso passo un array anzichè una stringa
     addRow(row) {
         if (typeof row !== 'object') {
             throw new Error('row must be an array');
