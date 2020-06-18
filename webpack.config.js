@@ -23,7 +23,7 @@ module.exports = {
     },
     output: {
       path: path.resolve(__dirname, 'dist'),
-      filename: 'src/js/main.js'
+      filename: 'src/js/index.js'
     },
     target: 'web',
     optimization: {

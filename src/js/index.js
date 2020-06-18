@@ -40,12 +40,6 @@ async function test(url) {
 
 test(url);
 
-function sortTest(provola) {
-    console.log('Funziono!' + provola);
-}
-
-sortTest('provola');
-
 function createNav(response){
     const data = response;
     document.getElementById('data').innerHTML = splitData(data);
@@ -159,3 +153,12 @@ const splitData = (x) => {
     const result = 'Data: ' + day + '-' + month + '-' + year;
 	return result;
 };
+
+// numeric value parameter
+function sortTest(n) {
+    table.sortRows(n);
+    const addTable = table.printTable();
+    table.append(parent, addTable);
+}
+
+window.sortTest = sortTest;

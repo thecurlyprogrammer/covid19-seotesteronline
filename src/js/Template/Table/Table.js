@@ -4,7 +4,10 @@ export default class Table {
     // rows è un array di oggetti
     rows = [];
     parent;
-    
+    sortedRows = [];
+    direction = 0;
+    n = '';
+
     constructor(parent) {
 
         if (!this.isAValidHtmlElement(parent)) {
@@ -33,7 +36,7 @@ export default class Table {
         const tableBody = this.getBody();
         // console.log(tableHeader);
         return `
-        <table>
+        <table id="myTable">
             <thead>
             ${tableHeader}
             </thead>
@@ -45,6 +48,7 @@ export default class Table {
     }
 
     getHeader() {
+        let counter = 0;
         let formattedColumns = '';
         for (const column of this.columns) {
             if (!column || !column.name) {
@@ -52,10 +56,12 @@ export default class Table {
             }
 
             if (column.isSortable) {
+                // console.log(column.name);
                 formattedColumns += `<th onclick="sortTest('${column.name}')">${column.name} <i class="fas fa-sort-down"></i></th>`;
             } else {
                 formattedColumns += `<th>${column.name}</th>`;
             }
+            counter += 1;
         }
         // console.log(this.columns);
         return `<tr>${formattedColumns}</tr>`;
@@ -99,22 +105,68 @@ export default class Table {
 
         this.rows.push(row);
     }
-
-    tableSort = (valuePath) => {
-        const array = this.rows;
-        let path = valuePath.split('.')  
-        // console.log(path);
-        return array.sort((a, b) => {
-           return getValue(b,path) -  getValue(a,path)
-        });
-      
-        function getValue(obj, path){
-          path.forEach(path => obj = obj[path])
-          return obj;
-        }
-    }
-      
+    
     isAValidHtmlElement(parent) {
         return parent instanceof HTMLDivElement || parent instanceof HTMLBodyElement;
+    }
+    
+    sortRows = (n) => {
+        // console.log(n);
+        switch(n) {
+            case 'Country':
+                this.sortByValue('country');
+                break;
+            case 'New Deaths':
+                this.n = 'newDeaths';
+                this.sortByValue('newDeaths');
+                break;
+            case 'Total Deaths':
+                this.sortByValue('totalDeaths');
+                break;
+            case 'New Recovered':
+                this.sortByValue('newRecovered');
+                break;
+            case 'Total Recovered':
+                this.sortByValue('totalRecovered');
+                break;
+            default:
+                console.log('Default');
+        }
+    }
+
+    changeDirection = () => {
+        if(this.direction == 0){
+            this.direction = 1;
+            return 'decr';
+        } else {
+            this.direction = 0;
+            return 'asc';
+        }
+    }
+    
+    sortByValue = (n) => {
+        const direction = this.changeDirection();
+        if(direction === 'asc'){
+            this.rows.sort(function (a, b) {
+                if(a[n] < b[n]) {
+                    return -1;
+                }
+                if(a[n] > b[n]) {
+                    return 1;
+                }
+                return 0;
+            });
+        } else if(direction === 'decr') {
+            this.rows.sort(function (a, b) {
+                // console.log(a.country);
+                if(a[n] > b[n]) {
+                    return -1;
+                }
+                if(a[n] < b[n]) {
+                    return 1;
+                }
+                return 0;
+            });
+        }
     }
 }
