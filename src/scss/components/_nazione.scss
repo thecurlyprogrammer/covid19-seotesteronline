@@ -18,6 +18,22 @@ th {
   border-bottom: 1px solid #dddddd;
   text-align: left;
   padding: 8px;
+  .titleContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    // background-color: green;
+    .headTitle{
+      // Nothing
+      // background-color: blue;
+      height: 100%;
+    }
+    .sortIcon{
+      display: flex;
+      flex-direction: column;
+      // background-color: red;
+    }
+  }
 }
 
 table {

@@ -21,25 +21,82 @@ const table = new Table(parent);
 // Get data from API
 async function getData(url) {
     let request;
-    try {
-        request = await axios.get(url);
-        localStorage.setItem('newConfirmed', request.data.Global.NewConfirmed);
-        const result = await Promise.all([
-            fetch(createNav(request.data.Date)),
-            fetch(createGlobal(request.data.Global)),
-            fetch(createCountries(request.data.Countries))
+    if(init()){
+        try {
+            request = await axios.get(url);
+            const result = await Promise.all([
+                fetch(createNav(request.data.Date)),
+                fetch(createGlobal(request.data.Global)),
+                fetch(createCountries(request.data.Countries))
+            ]);
+            saveToLocalStorage(request);
+            return {
+                request,
+                global: result[0],
+                country: result[1]
+            };
+        } catch (error) {
+            console.log(error);
+        }
+    } else {
+        let decode;
+        console.log('Ho preso i dati dallo storage');
+        decode = JSON.parse(localStorage.getItem('result'));
+        console.log(decode.data.Date);
+        const pippo = await Promise.all([
+            fetch(createNav(decode.data.Date)),
+            fetch(createGlobal(decode.data.Global)),
+            fetch(createCountries(decode.data.Countries))
         ]);
-        return {
-            request,
-            global: result[0],
-            country: result[1]
-        };
-    } catch (error) {
-        console.log(error);
     }
 }
 
+// Get dd + mm + yyyy
+const getGiorno = () => {
+    const today = new Date();
+    const dd = today.getDate();
+    const mm = today.getMonth()+1;
+    const yyyy = today.getFullYear();
+    console.log(dd + '/' + mm + '/' + yyyy);
+    const day = dd + '/' + mm + '/' + yyyy;
+    return day;
+}
+
+const init = () => {
+    const yesterday = localStorage.getItem('timeStamp');
+    const today = getGiorno();
+
+    if(today !== yesterday) {
+        console.log('Effettuo la chiamata');
+        return true;
+    } else {
+        console.log('Prendo i dati dallo Storage');
+        return false;
+    }
+}
+
+const saveToLocalStorage = (request) => {
+    const today = getGiorno();
+    localStorage.setItem('timeStamp', today);
+    localStorage.setItem('result', JSON.stringify(request));
+    const decode = JSON.parse(localStorage.getItem('result'));
+    // const pluto = localStorage.getItem('result');
+    // console.log(decode.data.Countries);
+}
+
 getData(url);
+
+// Split data function
+const splitData = (x) => {
+    const string = x.split('T');
+    const left = string[0];
+    const split = left.split('-');
+    const day = split[2];
+    const month = split[1];
+    const year = split[0];
+    const result = 'Data: ' + day + '-' + month + '-' + year;
+    return result;
+};
 
 function createNav(response) {
     const data = response;
@@ -146,18 +203,6 @@ const addRowToTable = (countries) => {
     const getRow = myRow.getHtml();
     table.addRow(getRow);
 }
-
-// Split data function
-const splitData = (x) => {
-    const string = x.split('T');
-    const left = string[0];
-    const split = left.split('-');
-    const day = split[2];
-    const month = split[1];
-    const year = split[0];
-    const result = 'Data: ' + day + '-' + month + '-' + year;
-    return result;
-};
 
 // Function invoked onclick (table <th>)
 function sortTest(n) {

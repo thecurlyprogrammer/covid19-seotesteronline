@@ -50,7 +50,12 @@ export default class Table {
             }
 
             if (column.isSortable) {
-                formattedColumns += `<th onclick="sortTest('${column.name}')">${column.name} <i class="fas fa-sort-down"></i></th>`;
+                formattedColumns += `<th onclick="sortTest('${column.name}')">
+                <div class="titleContainer">
+                <div class="headTitle">${column.name}</div>
+                <div class="sortIcon"><i class="fas fa-sort-up"></i><i class="fas fa-sort-down"></i></div>
+                </div>
+                </th>`;
             } else {
                 formattedColumns += `<th>${column.name}</th>`;
             }
